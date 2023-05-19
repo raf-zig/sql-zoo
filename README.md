@@ -1,0 +1,2 @@
+Created as part of [The Odin Project](https://www.theodinproject.com) curriculum.
+This is the [SQL Zoo](https://www.theodinproject.com/lessons/databases-sql-zoo) project, simply completing the exercises at [sqlzoo.net](https://www.sqlzoo.net/wiki/SQL_Tutorial).

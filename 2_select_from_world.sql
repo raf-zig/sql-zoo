@@ -25,17 +25,33 @@ SELECT name, population, area FROM world WHERE population > 250000000 OR area > 
 SELECT name, population, area FROM world WHERE population > 250000000 XOR area > 3000000;
 
 -- 9. For South America show population in millions and GDP in billions both to decimal places. 
-SELECT name, ROUND(population/1000000, 2) AS population_milli, ROUND(GDP/1000000000, 2) AS gdp_billi
-FROM world WHERE continent = 'South America';
+SELECT name, ROUND(population/1000000, 2) 
+             AS population_milli, 
+             ROUND(GDP/1000000000, 2) 
+             AS gdp_billi
+FROM world 
+WHERE continent = 'South America';
 
 /* 10. Show the name and per-capita GDP for those countries with a GDP of at
        least one trillion (1000000000000; that is 12 zeros). Round this value to the nearest 1000. */
-SELECT name, ROUND(GDP/population, -3) AS per_capita_gdp FROM world WHERE gdp >= 1000000000000;
+SELECT name, ROUND(GDP/population, -3) 
+             AS per_capita_gdp 
+FROM world 
+WHERE gdp >= 1000000000000;
 
 /* 12. Show the name and the capital where the first letters of each match.
        Don't include countries where the name and the capital are the same word. */
-SELECT name, capital FROM world WHERE LEFT(name, 1) = LEFT(capital, 1) AND name <> capital;   
+SELECT name, capital 
+FROM world 
+WHERE LEFT(name, 1) = LEFT(capital, 1) 
+AND name <> capital;   
 
 -- 13. Find the country that has all the vowels (a e i o u) and no spaces in its name.
-SELECT name FROM world WHERE name LIKE '%a%' AND name LIke '%e%' AND name LIke '%i%'
-AND name LIke '%o%' AND name LIke '%u%' AND name NOT LIke '% %';
+SELECT name 
+FROM world 
+WHERE name LIKE '%a%' 
+AND name LIke '%e%' 
+AND name LIke '%i%'
+AND name LIke '%o%' 
+AND name LIke '%u%' 
+AND name NOT LIke '% %';

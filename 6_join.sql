@@ -60,38 +60,38 @@ SELECT teamname, COUNT(matchid) AS 'goals'
 GROUP BY teamname;
 
 -- 10. Show the stadium and the number of goals scored in each stadium.
-SELECT stadium, COUNT(matchid) AS 'goals'
-  FROM game 
-  JOIN goal 
-    ON id=matchid
+  SELECT stadium, COUNT(matchid) AS 'goals'
+    FROM game 
+    JOIN goal 
+      ON id=matchid
 GROUP BY stadium;
 
 /* 11. For every match involving 'POL', show the matchid, date and the number of
        goals scored. */
-SELECT matchid,mdate, COUNT(matchid) AS 'goals'
-  FROM goal 
-  JOIN  game 
-    ON matchid = id 
- WHERE (team1 = 'POL' OR team2 = 'POL')
+  SELECT matchid,mdate, COUNT(matchid) AS 'goals'
+    FROM goal 
+    JOIN  game 
+      ON matchid = id 
+   WHERE (team1 = 'POL' OR team2 = 'POL')
 GROUP BY  matchid, mdate;
 
 /* 12. For every match where 'GER' scored, show matchid, match date and the
        number of goals scored by 'GER' */
-SELECT matchid, mdate, COUNT(matchid) AS 'goals'
-  FROM goal 
-  JOIN game 
-    ON matchid = id 
- WHERE teamid = 'GER'
+  SELECT matchid, mdate, COUNT(matchid) AS 'goals'
+    FROM goal 
+    JOIN game 
+      ON matchid = id 
+   WHERE teamid = 'GER'
 GROUP BY matchid, mdate;
 
 /* 13. List every match with the goals scored by each team as shown (table is
        not included here in my code). This will use "CASE WHEN" which has not been
        explained in any previous exercises. */
-SELECT mdate, team1, SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
-              team2, SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
-  FROM game  
-  LEFT JOIN goal 
-    ON matchid = id
+   SELECT mdate, team1, SUM(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1,
+                 team2, SUM(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+     FROM game  
+LEFT JOIN goal 
+       ON matchid = id
  GROUP BY mdate,
           matchid,
           team1,

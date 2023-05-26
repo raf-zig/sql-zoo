@@ -40,8 +40,8 @@ SELECT name, population
 SELECT name, 
        CONCAT(ROUND((population / (SELECT population 
                                      FROM world 
-                                    WHERE name LIKE 'germany')) * 100)
-       , '%') AS percentage 
+                                    WHERE name LIKE 'germany')) * 100), '%') 
+                                       AS percentage 
   FROM world 
  WHERE continent LIKE 'europe';
 
